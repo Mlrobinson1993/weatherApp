@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/font/weathericons-regular-webfont.woff2"
+    />
+    <title>Weatherly</title>
+  </head>
+  <body>
+    <nav><form action="" class="form-container">
+        <input type="text" placeholder="Location" />
+        <button class="find" type="button"><img class="search-icon" src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png"/></a></button>
+      </form>
+      <div class="dropdown">
+        <ul class="list-container">
+          <!--<li class="list-item">London, UK</li>
+          <li class="list-item">London, UK</li>
+          -->
+        </ul>
+      </div></nav>
+    <section class="container">
+      <div class="loading-spinner"></div>
+      <div class="main">
+
+        <div class="main-top">
+
+            <div class="main-top-left">
+
+
+              <h1 class="max-temperature">-</h1>
+              <h3 class="min-temperature">-</h3>
+              <div class="precip-humid-container">
+                  <div class="precip-humid-left">
+
+                      <h6 class="precip-header">Precipitation<br/><span id="precip-num">-</span></h6>
+                  </div>
+                  <div class="precip-humid-right">
+
+                    <h6 class="wind-speed">
+                      Wind Speed</br>
+                      <span id="wind-speed-measure">-</span>
+                      <span class="wind-speed-unit">km</span>
+                      </h6>
+                  </div>
+
+
+              </div>
+
+            </div>
+
+            <div class="main-top-right">
+              <h2 class="city-name">-</h2>
+              </div>
+
+
+          </div>
+          <div class="main-bottom">
+
+            <div class="days">
+             <span class="week-days"></span><span class="right days-icon days-icon1"></span><span class="right days-temperature"></span><span class="days-weather-text">Cloudy</span>
+            </div>
+            <div class="days">
+             <span class="week-days"></span><span class="right days-icon days-icon2"></span><span class="right days-temperature"></span><span class="days-weather-text">Cloudy </span>
+            </div>
+            <div class="days">
+              <span class="week-days"></span><span class="right days-icon days-icon3"></span><span class="right days-temperature"></span><span class="days-weather-text">Cloudy </span>
+            </div>
+            <div class="days">
+              <span class="week-days"></span> <span class="right days-icon days-icon4"></span><span class="right days-temperature"></span><span class="days-weather-text">Cloudy </span>
+            </div>
+            <div class="days">
+              <span class="week-days"></span><span class="right days-icon days-icon5"></span><span class="right days-temperature"></span><span class="days-weather-text">Cloudy </span>
+            </div>
+          </div>
+
+      </div>
+      <div class="circle"></div>
+    </section>
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "folders": [
+    {
+      "path": "."
+    },
+    {
+      "path": "/Users/mikey/Downloads/complete-javascript-course-master/9-forkify/starter"
+    }
+  ],
+  "settings": {
+    "liveServer.settings.multiRootWorkspaceName": "WeatherApp"
+  }
+}
