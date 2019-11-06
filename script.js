@@ -42,6 +42,15 @@ document.addEventListener("keypress", e => {
     }
   }
 });
+// } else if (
+//   (e.code === "ArrowDown" || e.code === "ArrowUp") &&
+//   input.value !== ""
+// ) {
+//   e.preventDefault();
+//   console.log(e.code);
+//   navigateListContainer(e);
+// }
+// });
 
 input.addEventListener("keyup", displayMatches);
 
@@ -375,7 +384,7 @@ function getDays(date = new Date().getDay()) {
 }
 
 function setDays() {
-  let dateNum = new Date().getDay();
+  let dateNum = new Date().getDay() + 1;
   let arr = [];
   for (let i = dateNum; arr.length < 5; i++) {
     if (getDays([i]) === getDays()) {
@@ -397,7 +406,7 @@ function updateDOMDays() {
   let days = document.querySelectorAll(".week-days");
   let daysArr = setDays();
   days.forEach((day, index) => {
-    day.textContent = daysArr[index + 1];
+    day.textContent = daysArr[index];
   });
 }
 
@@ -476,3 +485,17 @@ function zeroEverything() {
     weekDayWeatherText[i].textContent = "No Data";
   }
 }
+
+// function navigateDownListContainer(e) {
+//   listItems = Array.from(document.querySelectorAll("list-item"));
+//   let index;
+//   if (e.code === "ArrowDown") {
+//     index += 1;
+//     console.log(index);
+//     list[index].style.backgroundColor = "rgba(0, 0, 0, 0.2)";
+//   } else if (e.code === "ArrowUp") {
+//     index -= 1;
+//     console.log(index);
+//     list[index].style.backgroundColor = "rgba(0,0,0,0.2)";
+//   }
+// }
