@@ -25,10 +25,6 @@ nav {
 	align-items: center;
 }
 
-.type-something {
-	display: none;
-}
-
 .loading-spinner {
 	display: none;
 	pointer-events: none;
@@ -135,22 +131,13 @@ input:focus ~ button {
 	background: linear-gradient(to right, #ff512f, #f09819);
 }
 
-.circle {
-	/* border: 1px solid red; */
-	width: 45rem;
-	height: 45rem;
-	z-index: 1;
-	border-radius: 100%;
-	position: absolute;
-	left: 65%;
-	top: 60%;
-	transform: translate(-50%, -50%);
-	background: -webkit-linear-gradient(
-		180deg,
-		#ff512f,
-		#f09819
-	); /* Chrome 10-25, Safari 5.1-6 */
-	background: linear-gradient(180deg, #ff512f, #f09819);
+.click-me {
+	padding: 1rem;
+	border-radius: 5px;
+	margin-bottom: 1rem;
+	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08), 0 3px 6px rgba(0, 0, 0, 0.16);
+	outline: none;
+	border: none;
 }
 
 .main {

@@ -1,12 +1,53 @@
 const input = document.querySelector('input');
 const listContainer = document.querySelector('.list-container');
 const loadingSpinner = document.querySelector('.loading-spinner');
+const geoLocationButton = document.querySelector('.click-me');
 
 document.addEventListener('change', getInput);
 
 function getInput() {
 	let location = document.querySelector('input').value;
 	return location;
+}
+
+geoLocationButton.addEventListener('click', e => {
+	displayLoader();
+	let newLocation;
+	console.log('loading');
+	e.target.style.display = 'none';
+	if ('geolocation' in navigator) {
+		navigator.geolocation.getCurrentPosition(position => {
+			try {
+				// const endpoint = `https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/search/?lattlong=${position.coords.latitude},${position.coords.longitude}`;
+				const key = 'uxUqAHI8Qe1obWh1Bfl8vqhNvbZMu7dw';
+				const endpoint = `http://open.mapquestapi.com/geocoding/v1/reverse?key=${key}&location=${position.coords.latitude},${position.coords.longitude}`;
+				fetch(endpoint)
+					.then(res => res.json())
+					.then(data => {
+						newLocation = data.results[0].locations[0].adminArea5;
+						console.log(newLocation);
+						getClickedLocation(newLocation);
+					});
+
+				// data.results[0].locations[0].adminArea5));
+			} catch (error) {
+				console.log(error);
+				e.target.style.display = 'initial';
+			}
+		});
+	} else {
+		alert('Sorry, no geolocation available.');
+	}
+});
+
+async function getClickedLocation(data) {
+	await getLocation(data)
+		.then(result => DOMController(result))
+		.catch(error => {
+			console.log(error);
+			removeLoader();
+			alert('Error, try using the search function instead');
+		});
 }
 
 document.querySelector('button').addEventListener('click', () => {
