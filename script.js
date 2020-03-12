@@ -24,6 +24,7 @@ geoLocationButton.addEventListener('click', e => {
 				fetch(endpoint)
 					.then(res => res.json())
 					.then(data => {
+						console.log(data.results[0].locations);
 						newLocation = data.results[0].locations[0].adminArea5;
 						console.log(newLocation);
 						getClickedLocation(newLocation);
@@ -354,6 +355,7 @@ function displayMatches() {
 	const matchedCities = findCities(this.value, cities);
 	if (!this.value) {
 		html = '';
+		closeListContainer();
 		listContainer.innerHTML = html;
 	} else {
 		const html = matchedCities
@@ -366,6 +368,7 @@ function displayMatches() {
 				return `<li class="list-item">${cityName}</li>`;
 			})
 			.join('');
+		openListContainer();
 		listContainer.innerHTML = html;
 	}
 }
@@ -454,6 +457,7 @@ function updateDOMDays() {
 function updateBackground(day) {
 	let topSection = document.querySelector('.main-top');
 	let bottomSection = document.querySelector('.main-bottom');
+	let bottomOfTopSection = document.querySelector('.main-top-left');
 	let topDetailsContainer = document.querySelector('.precip-humid-container');
 	let cityName = document.querySelector('.city-name');
 	var mq = window.matchMedia('(max-width: 624px)');
@@ -465,12 +469,16 @@ function updateBackground(day) {
     )`;
 		bottomSection.style.backgroundColor = 'rgb(125, 75, 107)';
 		topDetailsContainer.style.backgroundColor = 'rgb(222, 139, 69)';
+		bottomOfTopSection.classList.remove('blue-gradient');
+		bottomOfTopSection.classList.add('purple-gradient');
 	} else {
 		mq ? (cityName.style.backgroundColor = 'rgba(73, 127, 171, 0.8)') : null;
 		topSection.style.backgroundImage =
 			"url('https://image.freepik.com/free-vector/vector-illustration-mountain-landscape_1441-72.jpg')";
 		bottomSection.style.backgroundColor = 'rgb(26,66,114)';
 		topDetailsContainer.style.backgroundColor = 'rgb(73,127,171)';
+		bottomOfTopSection.classList.add('blue-gradient');
+		bottomOfTopSection.classList.remove('purple-gradient');
 	}
 }
 
@@ -488,12 +496,24 @@ document
 		listContainer.innerHTML !== '' ? closeListContainer() : null
 	);
 
+function openListContainer() {
+	listContainer.classList.remove('hidden');
+	listContainer.classList.add('shown');
+}
+
 function closeListContainer() {
 	listContainer.innerHTML = '';
+	listContainer.classList.remove('shown');
+	listContainer.classList.add('hidden');
 }
 
 function showWeather() {
 	document.querySelector('.main').style.visibility = 'visible';
+	matchNav();
+}
+
+function matchNav() {
+	document.querySelector('.nav').style.background = 'transparent';
 }
 
 function displayLoader() {
